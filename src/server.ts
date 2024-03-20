@@ -15,7 +15,7 @@ const expressStartup = async () => {
         payload.logger.info("NextJS server is running")
 
         app.listen(PORT, async ()=> {
-            payload.logger.info(`Next.js App URL: ${ process.env.Next_PUBLIC_SERVER_URL }` );
+            payload.logger.info(`Next.js App URL: ${ process.env.NEXT_PUBLIC_SERVER_URL }` );
         })
     })
 };

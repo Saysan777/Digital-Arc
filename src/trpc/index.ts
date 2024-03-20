@@ -1,8 +1,10 @@
+
 import { createTRPCProxyClient } from "@trpc/client";
 import { publicProcedure, router } from "./trpc";
 
+// creating api using trpc.
 export const appRouter = router({
-    test: publicProcedure.query(() => "hello"),
+    testingApiFromBackend: publicProcedure.query(() => "hello"),
 });
 
 export type AppRouter = typeof appRouter;
