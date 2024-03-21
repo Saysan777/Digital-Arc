@@ -1,6 +1,6 @@
 
 import { createTRPCProxyClient } from "@trpc/client";
-import { publicProcedure, router } from "./trpc";
+import { publicProcedure, router } from "./server-trpc";
 
 // creating api using trpc.
 export const appRouter = router({
