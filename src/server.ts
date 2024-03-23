@@ -20,6 +20,7 @@ const expressStartup = async () => {
         }
     });
 
+    //Making the trpc router a express server with this middelware and sending req back to nextjs(check folder api).
     app.use('/api/trpc', trpcExpress.createExpressMiddleware({
         router: appRouter,
         createContext,
@@ -36,4 +37,4 @@ const expressStartup = async () => {
     })
 };
 
-expressStartup()
+expressStartup();

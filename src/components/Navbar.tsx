@@ -19,7 +19,7 @@ const Navbar = () => {
 
                         <div className="ml-4 flex lg:ml-0">
                             <Link href='/'>
-                            <Image src='/DigitalBazaar.png' alt="digital bazaar" width='100' height='100' />
+                                 <Image src='/DigitalBazaar.png' alt="digital bazaar" width='100' height='100' />
                             </Link>
 
                             <div className="hidden z-50 lg:ml-8 lg:block lg:self-stretch">
