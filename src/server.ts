@@ -26,7 +26,8 @@ const expressStartup = async () => {
         createContext,
     }));
 
-    app.use((req, res)=> nextHandler(req, res));
+    // We redirect every req to nextjs for using nextjs features as ssr, dynamic routing etc.
+    app.use((req, res) => nextHandler(req, res));
 
     nextApp.prepare().then(()=> {
         payload.logger.info("NextJS server is running")

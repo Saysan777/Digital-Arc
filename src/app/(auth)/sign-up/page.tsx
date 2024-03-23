@@ -11,11 +11,17 @@ import { useForm } from "react-hook-form"; // form validation
 import { zodResolver } from "@hookform/resolvers/zod";  // form input tester.Eg, email: should should contain @ and takes schema
 import { z } from "zod";    // helps creating schema that will be passed in zodResolver.
 import { AuthCredentialValidator } from "@/lib/validators/account-credentials-validator"; //created in separate folder using zod to use in client/server
+import { trpc } from "@/trpc/client";
 
 const Page = () => {
     type TAuthCredentialsValidator = z.infer<typeof AuthCredentialValidator>;
 
     const { register, handleSubmit, formState: { errors } } = useForm({ resolver: zodResolver(AuthCredentialValidator) });
+
+    //api call form client to server
+    const { data } = trpc.TestingProcedure.useQuery();
+
+    console.log('data---------', data)
 
     const onSubmit = ({ email, password }: TAuthCredentialsValidator) => {
         //send data to server
