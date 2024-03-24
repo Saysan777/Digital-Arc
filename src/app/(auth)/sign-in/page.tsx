@@ -13,17 +13,22 @@ import { ZodError, z } from "zod";    // helps creating schema that will be pass
 import { AuthCredentialValidator } from "@/lib/validators/account-credentials-validator"; //created in separate folder using zod to use in client/server
 import { trpc } from "@/trpc/client";
 import { toast } from "sonner";
-import { useRouter } from "next/navigation"
+import { useRouter, useSearchParams } from "next/navigation"
 
 const Page = () => {
+    const searchParams = useSearchParams()   // for client-rendered file, need to use hook. Check server file(that doesn't have use client at top), we can get it at props.
+    const router = useRouter();
+
+    const isSeller = searchParams.get('as')                 // in query it will be as http//localhost://3000/sign-in?as=seller
+    const origin = searchParams.get('origin')               // in query it will be as http//localhost://3000/sign-in?origin=http%3A%2F%2Flocalhost%3A3000%2Fproducts
+
     type TAuthCredentialsValidator = z.infer<typeof AuthCredentialValidator>;
 
     const { register, handleSubmit, formState: { errors } } = useForm<TAuthCredentialsValidator>({ resolver: zodResolver(AuthCredentialValidator) });
 
-    const router = useRouter();
 
     //api call form client to server
-    const { mutate, isLoading } = trpc.auth.createPayloadUser.useMutation({ 
+    const { mutate, isLoading } = trpc.auth.signIn.useMutation({ 
         onError: (err) => {
             if(err.data?.code === "CONFLICT") {
                 toast.error("This email is already in use. Sign In Instead?");
@@ -54,8 +59,8 @@ const Page = () => {
             <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
                 <div className="flex flex-col items-center space-y-2 text-center">
                     <Image src="/DigitalBazaar.png" alt="digital bazaar sign-up" width="100" height="100" />
-                    <h1 className="text-2xl font-bold">Create an account</h1>
-                    <Link href="/sign-in" className={ buttonVariants({ variant:'link',className:'gap-1.5' }) }>Already have an account? <ArrowRight /> </Link>
+                    <h1 className="text-2xl font-bold">Sign in to your account</h1>
+                    <Link href="/sign-up" className={ buttonVariants({ variant:'link',className:'gap-1.5' }) }>Don&apos;t have an account? <ArrowRight /> </Link>
                  </div>
                  
                 <div className="grid gap-6">
@@ -75,9 +80,18 @@ const Page = () => {
                                 { errors?.password && <p className="text-sm text-red-500">{ errors.password.message }</p> }
                             </div>
 
-                            <Button>Sign Up</Button>
+                            <Button>Sign In</Button>
                         </div>
                     </form>
+
+                    <div className="relative">
+                        <div aria-hidden="true" className="absolute inset-0 flex items-center">
+                            <span className="w-full border-t" />
+                        </div>
+                        <div className="relative flex justify-center text-xs uppercase">
+                            <span className="bg-background px-2 text-muted-foreground">Or continue with</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
