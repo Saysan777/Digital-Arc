@@ -1,5 +1,5 @@
 
-import { authRouter } from "./endpoints/auth-route";
+import { authRouter } from "./endpoints/auth-router";
 import { router } from "./server-trpc";
 
 // creating api using trpc.

@@ -16,16 +16,16 @@ import { trpc } from "@/trpc/client";
 const Page = () => {
     type TAuthCredentialsValidator = z.infer<typeof AuthCredentialValidator>;
 
-    const { register, handleSubmit, formState: { errors } } = useForm({ resolver: zodResolver(AuthCredentialValidator) });
+    const { register, handleSubmit, formState: { errors } } = useForm<TAuthCredentialsValidator>({ resolver: zodResolver(AuthCredentialValidator) });
 
     //api call form client to server
-    const { data } = trpc.TestingProcedure.useQuery();
-
-    console.log('data---------', data)
+    const { mutate, isLoading } = trpc.auth.createPayloadUser.useMutation({});
 
     const onSubmit = ({ email, password }: TAuthCredentialsValidator) => {
         //send data to server
+        mutate({ email, password });
     }
+    
   return (
     <>
         <div className="container relative flex pt-20 flex-col items-center justify-center lg:px-0">
@@ -37,16 +37,16 @@ const Page = () => {
                  </div>
                  
                 <div className="grid gap-6">
-                     <form onSubmit={handleSubmit(onSubmit)}>
+                     <form onSubmit={ handleSubmit(onSubmit) }>
                         <div className="grid gap-2">
                             <div className="grid gap-1 py-2">
                                 <Label htmlFor="email">Email</Label>
-                                <Input { ...register('email') } className={ cn({ "focus-visible:ring-red-500": errors.email }) } placeholder="Enter your email"/>
+                                <Input { ...register('email') } type="email" className={ cn({ "focus-visible:ring-red-500": errors.email }) } placeholder="Enter your email"/>
                             </div>
 
                             <div className="grid gap-1 py-2">
                                 <Label htmlFor="password">Password</Label>
-                                <Input { ...register('password')  } className={ cn({ "focus-visible:ring-red-500": errors.password }) } placeholder="Password"/>
+                                <Input { ...register('password')  } type="password" className={ cn({ "focus-visible:ring-red-500": errors.password }) } placeholder="Password"/>
                             </div>
 
                             <Button>Sign Up</Button>
