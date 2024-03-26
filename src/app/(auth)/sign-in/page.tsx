@@ -22,35 +22,45 @@ const Page = () => {
     const isSeller = searchParams.get('as')                 // in query it will be as http//localhost://3000/sign-in?as=seller
     const origin = searchParams.get('origin')               // in query it will be as http//localhost://3000/sign-in?origin=http%3A%2F%2Flocalhost%3A3000%2Fproducts
 
+    const continueAsSeller = () => {
+        router.push("?as=seller");
+    }
+
+    const continueAsBuyer = () => {
+        router.replace("/sign-in", undefined);
+    }
+
     type TAuthCredentialsValidator = z.infer<typeof AuthCredentialValidator>;
 
     const { register, handleSubmit, formState: { errors } } = useForm<TAuthCredentialsValidator>({ resolver: zodResolver(AuthCredentialValidator) });
 
 
     //api call form client to server
-    const { mutate, isLoading } = trpc.auth.signIn.useMutation({ 
-        onError: (err) => {
-            if(err.data?.code === "CONFLICT") {
-                toast.error("This email is already in use. Sign In Instead?");
-                return;
-            }
+    const { mutate: signIn, isLoading } = trpc.auth.signIn.useMutation({
+      onSuccess: ({ }) => {
+          toast.success('signed in successfully');
+          router.refresh();
 
-            if(err instanceof ZodError) {
-                toast.error(err.issues[0].message);
-                return;
-            }
+          if(origin) {      // origin = router history: To send user to the original page they were on before signing in.
+            router.push(`${ origin }`);
+          };
 
-            toast.error("Something went wrong. Please try again later.");
-        },
-        onSuccess: ({ sentToEmail }) => {
-            toast.success(`Verification email sent to ${ sentToEmail }`);
-            router.push(`/verify-email?to=${ sentToEmail }`);
-        }
+          if(isSeller) {
+            router.push(`/sell`);
+            return;
+          };
+
+          router.push('/');
+      },
+      onError: (err) => {
+          if(err.data?.code === 'UNAUTHORIZED') {
+            toast.error('Invalid credentials');
+          }
+      }
      });
 
     const onSubmit = ({ email, password }: TAuthCredentialsValidator) => {
-        //send data to server
-        mutate({ email, password });
+        signIn({ email, password });
     }
 
   return (
@@ -89,9 +99,16 @@ const Page = () => {
                             <span className="w-full border-t" />
                         </div>
                         <div className="relative flex justify-center text-xs uppercase">
-                            <span className="bg-background px-2 text-muted-foreground">Or continue with</span>
+                            <span className="bg-background px-2 text-muted-foreground">or</span>
                         </div>
                     </div>
+
+                    { isSeller ? (
+                        <Button onClick={ continueAsBuyer } variant='secondary' disabled={ isLoading }>Contiue as customer</Button>
+                    ): (
+                        <Button onClick={ continueAsSeller } variant='secondary' disabled={ isLoading }>Continue as Seller</Button>
+                    )
+                }
                 </div>
             </div>
         </div>

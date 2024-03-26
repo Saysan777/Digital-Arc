@@ -47,8 +47,9 @@ export const authRouter = router({
         return { success: true };
     }),
 
-    signIn: publicProcedure.input(AuthCredentialValidator).mutation(async ({ input })=> {
+    signIn: publicProcedure.input(AuthCredentialValidator).mutation(async ({ input, ctx })=> {
         const { email, password } = input;
+        const { res } = ctx
         const payload = await getPayloadClient()
 
         try {
@@ -57,10 +58,13 @@ export const authRouter = router({
                 data: {
                     email,
                     password
-                }
+                },
+                res             // this is attaching token in response in successful login to store in user cookie in browser.
             })
-        }catch (e) {
 
+            return { success: true };
+        }catch (e) {
+            throw new TRPCError({ code: 'UNAUTHORIZED' });
         }
     })
 });
