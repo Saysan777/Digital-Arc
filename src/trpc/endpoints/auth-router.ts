@@ -49,8 +49,8 @@ export const authRouter = router({
 
     signIn: publicProcedure.input(AuthCredentialValidator).mutation(async ({ input, ctx })=> {
         const { email, password } = input;
-        const { res } = ctx
-        const payload = await getPayloadClient()
+        const { res } = ctx;
+        const payload = await getPayloadClient();
 
         try {
             await payload.login({

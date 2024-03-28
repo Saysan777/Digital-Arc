@@ -19,7 +19,7 @@ const Page = () => {
     const searchParams = useSearchParams()   // for client-rendered file, need to use hook. Check server file(that doesn't have use client at top), we can get it at props.
     const router = useRouter();
 
-    const isSeller = searchParams.get('as')                 // in query it will be as http//localhost://3000/sign-in?as=seller
+    const isSeller = searchParams.get('as') === 'seller'                 // in query it will be as http//localhost://3000/sign-in?as=seller
     const origin = searchParams.get('origin')               // in query it will be as http//localhost://3000/sign-in?origin=http%3A%2F%2Flocalhost%3A3000%2Fproducts
 
     const continueAsSeller = () => {
@@ -34,7 +34,6 @@ const Page = () => {
 
     const { register, handleSubmit, formState: { errors } } = useForm<TAuthCredentialsValidator>({ resolver: zodResolver(AuthCredentialValidator) });
 
-
     //api call form client to server
     const { mutate: signIn, isLoading } = trpc.auth.signIn.useMutation({
       onSuccess: ({ }) => {
@@ -42,11 +41,11 @@ const Page = () => {
           router.refresh();
 
           if(origin) {      // origin = router history: To send user to the original page they were on before signing in.
-            router.push(`${ origin }`);
+            router.push(`/${ origin }`);
           };
 
           if(isSeller) {
-            router.push(`/sell`);
+            router.push('/sell');
             return;
           };
 
@@ -69,7 +68,7 @@ const Page = () => {
             <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
                 <div className="flex flex-col items-center space-y-2 text-center">
                     <Image src="/DigitalBazaar.png" alt="digital bazaar sign-up" width="100" height="100" />
-                    <h1 className="text-2xl font-bold">Sign in to your account</h1>
+                    <h1 className="text-2xl font-bold">Sign in to your { isSeller ? 'seller account' : 'account' }</h1>
                     <Link href="/sign-up" className={ buttonVariants({ variant:'link',className:'gap-1.5' }) }>Don&apos;t have an account? <ArrowRight /> </Link>
                  </div>
                  
@@ -104,7 +103,7 @@ const Page = () => {
                     </div>
 
                     { isSeller ? (
-                        <Button onClick={ continueAsBuyer } variant='secondary' disabled={ isLoading }>Contiue as customer</Button>
+                        <Button onClick={ continueAsBuyer } variant='secondary' disabled={ isLoading }>Continue as customer</Button>
                     ): (
                         <Button onClick={ continueAsSeller } variant='secondary' disabled={ isLoading }>Continue as Seller</Button>
                     )

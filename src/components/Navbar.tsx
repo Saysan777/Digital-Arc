@@ -1,13 +1,17 @@
 import Link from "next/link"
 import MaxWidthWrapper from "./MaxWidthWrapper"
-// import { Icons } from "./Icons"
 import Image from "next/image"
 import NavItems from "./NavItems"
 import { buttonVariants } from "./ui/button"
 import Cart from "./Cart"
+import { $currentUser } from "@/lib/payload-utils"
+import { cookies } from "next/headers"  //import cookies from nextjs
 
-const Navbar = () => {
-    const user = null;
+const Navbar = async () => {
+    const nextCookies = cookies();              //use this fn to get cookies.(auto provided by nextjs)
+    const user = await $currentUser(nextCookies);   // utility fn to get currentUser.
+
+    console.log('current user', user);
 
   return (
     <div className="bg-white sticky z-50 top-0 inset-x-0 h-16">
