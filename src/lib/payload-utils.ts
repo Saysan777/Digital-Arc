@@ -5,17 +5,14 @@ import { User } from "../../payload-types";
 export const $currentUser = async (cookies: NextRequest['cookies'] | ReadonlyRequestCookies) => {
     const token = cookies.get("payload-token")?.value;
 
-    console.log('token-------------', token)
-
-    const res = await fetch(`${ process.env.NEXT_PUBLIC_SERVER_URL }/api/users/me`, {     // this api is auto created by payload(check payload-readme.md) and the cookie token is verified.
+    const meRes = await fetch(`${ process.env.NEXT_PUBLIC_SERVER_URL }/api/users/me`,  // this api is auto created by payload(check payload-readme.md) and the cookie token is verified.
+    {    
         headers: {
             Authorization: `JWT ${ token }`,
         }
     })
 
-    console.log('res--------', res);
-
-    const { user } = (await res.json()) as { user: User | null }
+    const { user }  = (await meRes.json()) as { user: User | null };
 
     return user;
 }

@@ -3,7 +3,7 @@ import Image from "next/image";
 
 interface PageProps {
     searchParams: {
-        [ key: string ]: string | string[] | undefined
+        [ key: string ]: string | string[] | undefined;
     }
 }
 

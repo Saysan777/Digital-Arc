@@ -34,14 +34,15 @@ const Page = () => {
 
     const { register, handleSubmit, formState: { errors } } = useForm<TAuthCredentialsValidator>({ resolver: zodResolver(AuthCredentialValidator) });
 
-    //api call form client to server
+    // api call form client to server
     const { mutate: signIn, isLoading } = trpc.auth.signIn.useMutation({
-      onSuccess: ({ }) => {
-          toast.success('signed in successfully');
+      onSuccess: () => {
+          toast.success('Signed in successfully');
           router.refresh();
 
           if(origin) {      // origin = router history: To send user to the original page they were on before signing in.
             router.push(`/${ origin }`);
+            return;
           };
 
           if(isSeller) {

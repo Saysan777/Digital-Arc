@@ -11,7 +11,7 @@ dotenv.config({
 });
 
 //setting up nodemailer using resend api key with payload
-const transpoter = nodemailer.createTransport({
+const transporter = nodemailer.createTransport({
     host: "smtp.resend.com",
     secure: true,
     port: 465,
@@ -46,7 +46,7 @@ export const getPayloadClient = async ({ initOptions }: Args = {}): Promise<Payl
     if(!cached.promise) {
         cached.promise = payload.init({ 
             email: { 
-                transport: transpoter, 
+                transport: transporter,                             // our transporter is resend.
                 fromAddress: "onboarding@resend.dev",                // You can also use: onboarding@resend.com which is provided by resend
                 fromName: 'Digital Bazaar'
             }, 

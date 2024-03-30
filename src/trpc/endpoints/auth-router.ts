@@ -35,11 +35,13 @@ export const authRouter = router({
     verifyEmail: publicProcedure.input(z.object({ token: z.string() })).query(async ({ input })=> {
         const { token } = input;
 
+        console.log('verify email', token);
+
         const payload = await getPayloadClient();
 
         const isVerified = await payload.verifyEmail({
             collection: "users",
-            token,         
+            token,
         });
 
         if(!isVerified) throw new TRPCError({ code: 'UNAUTHORIZED' });
@@ -59,11 +61,11 @@ export const authRouter = router({
                     email,
                     password
                 },
-                res             // this is attaching token in response in successful login to store in user cookie in browser.
+                res           // this is attaching token in response in successful login to store in user cookie in browser.
             })
 
             return { success: true };
-        }catch (e) {
+        } catch (e) {
             throw new TRPCError({ code: 'UNAUTHORIZED' });
         }
     })
