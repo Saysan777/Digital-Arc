@@ -6,6 +6,7 @@ import { buttonVariants } from "./ui/button"
 import Cart from "./Cart"
 import { $currentUser } from "@/lib/payload-utils"
 import { cookies } from "next/headers"  //import cookies from nextjs
+import UserAccountNav from "./UserAccountNav"
 
 const Navbar = async () => {
     const nextCookies = cookies();              //use this fn to get cookies.(auto provided by nextjs)
@@ -35,7 +36,7 @@ const Navbar = async () => {
 
                                     { user ? null: ( <span className="h-6 w-px bg-gray-200" aria-hidden="true" /> ) }
 
-                                    { user ? <p></p> : ( <Link href='/sign-up' className={ buttonVariants({variant: 'ghost'} )}> Create an account?  </Link> ) }
+                                    { user ? <UserAccountNav user={ user } /> : ( <Link href='/sign-up' className={ buttonVariants({variant: 'ghost'} )}> Create an account?  </Link> ) }
 
                                     { user ? ( <span className="h-6 w-px bg-gray-200" aria-hidden="true" /> ) : null }
 

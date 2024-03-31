@@ -1,20 +1,19 @@
 "use client"
 
-import { Button, buttonVariants } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { cn } from "@/lib/utils"
-import { ArrowRight } from "lucide-react"
-import Image from "next/image"
-import Link from "next/link"
+import { Button, buttonVariants } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { cn } from "@/lib/utils";
+import { ArrowRight } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 import { useForm } from "react-hook-form"; // form validation
 import { zodResolver } from "@hookform/resolvers/zod";  // form input tester.Eg, email: should should contain @ and takes schema
 import { ZodError, z } from "zod";    // helps creating schema that will be passed in zodResolver.
 import { AuthCredentialValidator } from "@/lib/validators/account-credentials-validator"; //created in separate folder using zod to use in client/server
 import { trpc } from "@/trpc/client";
 import { toast } from "sonner";
-import { useRouter, useSearchParams } from "next/navigation"
-
+import { useRouter, useSearchParams } from "next/navigation";
 const Page = () => {
     const searchParams = useSearchParams()   // for client-rendered file, need to use hook. Check server file(that doesn't have use client at top), we can get it at props.
     const router = useRouter();
@@ -38,7 +37,6 @@ const Page = () => {
     const { mutate: signIn, isLoading } = trpc.auth.signIn.useMutation({
       onSuccess: () => {
           toast.success('Signed in successfully');
-          router.refresh();
 
           if(origin) {      // origin = router history: To send user to the original page they were on before signing in.
             router.push(`/${ origin }`);
@@ -51,6 +49,7 @@ const Page = () => {
           };
 
           router.push('/');
+          router.refresh();
       },
       onError: (err) => {
           if(err.data?.code === 'UNAUTHORIZED') {
