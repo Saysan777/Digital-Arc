@@ -1,5 +1,5 @@
 import { Access, CollectionConfig } from "payload/types";
-import { User } from "../../payload-types";
+import { User } from '../payload-types';
 
 const isAdminOrHasAccessToImages = (): Access => {
     return async ({ req }) => {
@@ -25,7 +25,7 @@ export const Media: CollectionConfig = {
             }
         ]
     },
-    access: {
+    access: {       // adding permission/access to read, update and delete media based on admin or user check.
         read: async ({ req }) => {
             const referer = req.headers.referer;        // if exists then it means it came from frontend and should be visible/readable to everyone.
 
@@ -34,7 +34,9 @@ export const Media: CollectionConfig = {
             }
 
             return await isAdminOrHasAccessToImages()({ req });
-         } 
+         },
+         update: isAdminOrHasAccessToImages(),          // short hand for above await isAdminOrHasAccessToImages.
+         delete: isAdminOrHasAccessToImages()
     },
     admin: {
         hidden: ({ user }) => user.role !== 'admin'                 // If user is not admin then hide this collection. This will hide collection from admin panel.
