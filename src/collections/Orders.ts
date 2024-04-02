@@ -1,6 +1,6 @@
 import { Access, CollectionConfig } from "payload/types";
 
-const personalOrder: Access = ({ req: { user } }) => { 
+const personalOrder: Access = ({ req: { user } }) => {
     if(user.role === 'admin') return true;
 
     // TODO: Understand the logic behind this.
@@ -18,7 +18,7 @@ export const Orders: CollectionConfig = {
         description: 'A summary of all your order on Digital Bazaar'
     },
     access: {
-        read: personalOrder,             // can only read/see personal/own order.
+        read: personalOrder,            // can only read/see personal/own order.
         create: ({ req })=> req.user.role ==='admin',
         update: ({ req })=> req.user.role ==='admin',
         delete: ({ req })=> req.user.role ==='admin'
