@@ -41,7 +41,7 @@ export default function Home() {
           </div>
         </div>
 
-        <ProductReel title="Brand New" />
+        <ProductReel title="Brand New" href="/products"/>
       </MaxWidthWrapper>
 
       <section className="border-t border-gray-200 bg-gray-50">

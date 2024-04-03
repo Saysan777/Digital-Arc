@@ -41,12 +41,12 @@ export const getPayloadClient = async ({ initOptions }: Args = {}): Promise<Payl
         return cached.client;
     }
 
-    // Payload initilization
+    // Payload initialization
     if(!cached.promise) {
         cached.promise = payload.init({ 
             email: { 
                 transport: transporter,                             // our transporter is resend.
-                fromAddress: "onboarding@resend.dev",                // You can also use: onboarding@resend.com which is provided by resend
+                fromAddress: "no-reply@alokaryal.com.np",                // You can also use: onboarding@resend.com which is provided by resend for testing purpose
                 fromName: 'Digital Bazaar'
             }, 
             secret: process.env.PAYLOAD_SECRET, 
