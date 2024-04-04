@@ -1,14 +1,28 @@
+"use client"
+
+import { TQueryValidator } from "@/lib/validators/query-validator";
+import { trpc } from "@/trpc/client";
 import Link from "next/link";
 
 interface ProductReelProps {
     title: string
     subtitle?: string;
     href?: string;
+    query: TQueryValidator;
 };
 
+const FALLBACK_LIMIT = 4;
 const ProductReel = (props: ProductReelProps) => {
-    const { title, subtitle, href } = props;
-    console.log(href)
+    const { title, subtitle, href, query } = props;
+    const { data  } = trpc.getInfiniteProducts.useInfiniteQuery(
+        {
+            limit: query.limit ?? FALLBACK_LIMIT,
+            query
+        },
+        {
+            getNextPageParam: (lastPage) => lastPage.nextPage
+        }
+    );
 
   return (
     <section>
@@ -18,7 +32,15 @@ const ProductReel = (props: ProductReelProps) => {
                 { subtitle ? <p className="mt-2 text-muted-foreground text-sm">{ subtitle }</p> : null }
             </div>
 
-            { href ? <Link href={ href } className="hidden text-sm font-medium text-blue-600 hover:text-blue-500">Shop the collection <span aria-hidden="true" />&rarr;</Link> : null }
+            { href ? <Link href={ href } className="hidden text-sm font-medium text-blue-600 hover:text-blue-500 md:block">Shop the collection <span aria-hidden="true" />&rarr;</Link> : null }
+
+            <div className="relative">
+                <div className="mt-6 flex items-center w-full">
+                    <div className="w-full grid grid-cols-2 gap-x-4 gap-y-10 sm:gap-x-6 md:grid-cols-4 md:gap-y-10 lg:gap-x-8">
+
+                    </div>
+                </div> 
+            </div>
         </div>
     </section>
   )
