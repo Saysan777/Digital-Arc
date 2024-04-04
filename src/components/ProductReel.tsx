@@ -22,9 +22,7 @@ const ProductReel = (props: ProductReelProps) => {
         {
             getNextPageParam: (lastPage) => lastPage.nextPage
         }
-    )
-
-    console.log('products--------------', data);
+    );
 
   return (
     <section>
