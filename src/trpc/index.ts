@@ -24,7 +24,7 @@ export const appRouter = router({
             parsedQueryOpts[ key ] = { equals: value }
         });
         
-        const page = cursor || 1;
+        const page = cursor || 1;       // Cursor means page number. Default is one. payload returns data sets as pages.
 
         const payload = await getPayloadClient();
 
@@ -39,7 +39,7 @@ export const appRouter = router({
             sort,
             depth: 1,
             limit,
-            page,
+            page,                   // if page is passed as arg, we can take specific page from the list of document returned from db. (Payload returns result in pages automatically)
         });
 
         return {
