@@ -35,8 +35,6 @@ export const authRouter = router({
     verifyEmail: publicProcedure.input(z.object({ token: z.string() })).query(async ({ input })=> {
         const { token } = input;
 
-        console.log('verify email', token);
-
         const payload = await getPayloadClient();
 
         const isVerified = await payload.verifyEmail({

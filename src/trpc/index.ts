@@ -32,7 +32,7 @@ export const appRouter = router({
             collection: 'products',
             where: {
                 approvedForSale: {
-                    equals: 'approved',
+                    equals: 'Approved',
                 },
                 ...parsedQueryOpts
             },
