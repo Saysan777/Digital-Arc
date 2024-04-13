@@ -13,11 +13,8 @@ interface ProductListingProps {
   index: number
 }
 
-const ProductListing = ({
-  product,
-  index,
-}: ProductListingProps) => {
-  const [isVisible, setIsVisible] = useState<boolean>(false)
+const ProductListing = ({ product,index }: ProductListingProps) => {
+  const [ isVisible, setIsVisible ] = useState<boolean>(false)
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -33,8 +30,7 @@ const ProductListing = ({
     ({ value }) => value === product.category
   )?.label
 
-  const validUrls = product.images
-    .map(({ image }) =>
+  const validImageUrls = product.images.map(({ image }) =>
       typeof image === 'string' ? image : image.url
     )
     .filter(Boolean) as string[]
@@ -50,7 +46,7 @@ const ProductListing = ({
         )}
         href={`/product/${product.id}`}>
         <div className='flex flex-col w-full'>
-          <ImageSlider urls={validUrls} />
+          <ImageSlider imageUrls={ validImageUrls } />
 
           <h3 className='mt-4 font-medium text-sm text-gray-700'>
             {product.name}
