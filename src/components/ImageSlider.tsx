@@ -17,16 +17,9 @@ interface ImageSliderProps {
 }
 
 const ImageSlider = ({ imageUrls }: ImageSliderProps) => {
-  console.log('imageURls----------------', imageUrls)
 
   const [swiper, setSwiper] = useState<null | SwiperType>(null)
   const [activeIndex, setActiveIndex] = useState(0)
-  
-  function handleOpen () {
-    const args = {
-      arguments: [1,,2,3,4]
-    }
-  }
 
   const [slideConfig, setSlideConfig] = useState({
     isBeginning: true,
@@ -50,21 +43,18 @@ const ImageSlider = ({ imageUrls }: ImageSliderProps) => {
   return (
     <div className='group relative bg-zinc-100 aspect-square overflow-hidden rounded-xl'>
       <div className='absolute z-10 inset-0 opacity-0 group-hover:opacity-100 transition'>
-        <button
-          onClick={(e) => {
+        <button onClick={(e) => {
             e.preventDefault()
             swiper?.slideNext()
           }}
-          className={cn(
-            activeStyles,
-            'right-3 transition',
-            {
+          className={cn( activeStyles, 'right-3 transition', {
               [inactiveStyles]: slideConfig.isEnd,
               'hover:bg-primary-300 text-primary-800 opacity-100':
                 !slideConfig.isEnd,
             }
           )}
-          aria-label='next image'>
+          aria-label='next image'
+          >
           <ChevronRight className='h-4 w-4 text-zinc-700' />{' '}
         </button>
         <button

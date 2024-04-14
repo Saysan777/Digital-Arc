@@ -70,7 +70,7 @@ export const Product_Files: CollectionConfig = {
     },
     upload: {
         staticURL: '/product_files',
-        staticDir: 'product_files',
+        staticDir: 'product_files', // stores in project itself under src dir.
         mimeTypes: [ 'image/*', 'application/postscript', 'font/*' ]
     },
     fields:[

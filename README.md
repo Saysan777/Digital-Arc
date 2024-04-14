@@ -17,4 +17,7 @@ For form validation, I'm using react-hook-form along with zod for data validatio
 This project uses `TRPC` to intete seamless type safety communication between client and server.
 [`TRPC`](https://trpc.io)
 
+This project uses `zustand` for managing state.
+[`zustand`](https://docs.pmnd.rs/zustand/getting-started/introduction)
+
 
