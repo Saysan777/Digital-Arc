@@ -10,7 +10,7 @@ export const appRouter = router({
     auth: authRouter,
 
     getInfiniteProducts: publicProcedure.input(z.object({ 
-        limit: z.number().min(1).max(100),
+        limit: z.number().min(1).max(100), 
         cursor: z.number().nullish(),
         query: QueryValidator
     })).query(async ({ input })=> {
@@ -19,7 +19,7 @@ export const appRouter = router({
 
         const parsedQueryOpts: Record<string, { equals: string }> = {}
         
-        // Parsing the queryopts input to mongoddb or payload db query format.
+        // Parsing the queryopts input to mongodb or payload db query format.
         Object.entries(queryOpts).forEach(([ key, value ])=> {
             parsedQueryOpts[ key ] = { equals: value }
         });
