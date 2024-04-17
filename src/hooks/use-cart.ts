@@ -14,8 +14,7 @@ type CartState = {
 }
 // persist middleware is used to persist data when user refresh the page.
 export const useCart = create<CartState>()(
-  persist(
-    (set) => ({
+  persist((set) => ({
       items: [],
       addItem: (product) =>
         set((state) => {

@@ -8,28 +8,33 @@ import Link from "next/link";
 import { buttonVariants } from "./ui/button";
 import Image from "next/image";
 import { useCart } from "@/hooks/use-cart";
+import { ScrollArea } from "./ui/scroll-area";
 
 const Cart = () => {
     const { items } = useCart();
-    const itemCount = items.length;
+    const itemsCount = items.length;
     const fee = 1;
 
   return (
   <Sheet>
     <SheetTrigger className="group -m-2 flex items-center p-2">
         <ShoppingCart className="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500" />
-        <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">0</span>
+        <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">{ itemsCount }</span>
     </SheetTrigger>
 
     <SheetContent className="flex w-full flex-col pr-0 sm:max-w-lg">
         <SheetHeader className="space-y-2.5 pr-6 items-center">
-            <SheetTitle>Cart (0)</SheetTitle>
+            <SheetTitle>Cart ({ itemsCount })</SheetTitle>
         </SheetHeader>
 
-        { itemCount > 0 ? (
+        { itemsCount > 0 ? (
             <>
              <div className="flex w-full flex-col pr-6">
-                {/* TODO: cart logic */}
+                <ScrollArea>
+                    { items.map(()=> {
+                        return ''
+                    }) }
+                </ScrollArea>
              </div>
 
              <div className="space-y-4 pr-6">
