@@ -1,7 +1,9 @@
 
 const CartItems = () => {
   return (
-    <div>CartItems</div>
+    <div>
+      cartItems
+    </div>
   )
 }
 

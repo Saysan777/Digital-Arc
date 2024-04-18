@@ -13,7 +13,7 @@ import { ScrollArea } from "./ui/scroll-area";
 const Cart = () => {
     const { items } = useCart();
     const itemsCount = items.length;
-    const fee = 1;
+    const fee = 1;  // calculate this fee dynamically
 
   return (
   <Sheet>
