@@ -16,12 +16,11 @@ const Page = () => {
 
   const router = useRouter()
 
-//   const { mutate: createCheckoutSession, isLoading } =
-//     trpc.payment.createSession.useMutation({
-//       onSuccess: ({ url }) => {
-//         if (url) router.push(url)
-//       },
-//     })
+  const { mutate: createCheckoutSession, isLoading } = trpc.payment.createSession.useMutation({
+      onSuccess: ({ url }) => {
+        if (url) router.push(url)         // pushing user to stripe session url
+      },
+    })
 
   const productIds = items.map(({ product }) => product.id)
 
@@ -62,7 +61,7 @@ const Page = () => {
                   aria-hidden='true'
                   className='relative mb-4 h-40 w-40 text-muted-foreground'>
                   <Image
-                    src='/hippo-empty-cart.png'
+                    src='/empty-cart-digital-bazaar.svg'
                     fill
                     loading='eager'
                     alt='empty shopping cart hippo'
@@ -211,16 +210,17 @@ const Page = () => {
 
             <div className='mt-6'>
               <Button
-                // disabled={items.length === 0 || isLoading}
-                disabled={items.length === 0}
-                // onClick={() =>
-                //   createCheckoutSession({ productIds })
-                // }
+                disabled={items.length === 0 || isLoading}
+                onClick={() =>
+                  createCheckoutSession({ productIds })
+                }
                 className='w-full'
                 size='lg'>
-                {/* {isLoading ? (
-                  <Loader2 className='w-4 h-4 animate-spin mr-1.5' />
-                ) : null} */}
+                { 
+                  isLoading ? (
+                    <Loader2 className='w-4 h-4 animate-spin mr-1.5' />
+                  ) : null
+                }
                 Checkout
               </Button>
             </div>

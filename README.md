@@ -14,10 +14,14 @@ For form validation, I'm using react-hook-form along with zod for data validatio
 [`react-hook-form`](https://react-hook-form.com/)
 [`Zod`](https://zod.dev/)
 
-This project uses `TRPC` to intete seamless type safety communication between client and server.
+This project uses `TRPC` for seamless type safety communication between client and server.
 [`TRPC`](https://trpc.io)
 
 This project uses `zustand` for managing state.
 [`zustand`](https://docs.pmnd.rs/zustand/getting-started/introduction)
 
+This Project uses `react-email/component` for email receipts.
+[`ReactEmail`]()
 
+This Project uses `date-fns` for handling dates.
+[`Date-fns`]()

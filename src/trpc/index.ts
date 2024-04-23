@@ -1,9 +1,11 @@
 
 import { z } from "zod";
 import { authRouter } from "./endpoints/auth-router";
-import { publicProcedure, router } from "./server-trpc";
+import { privateProcedure, publicProcedure, router } from "./server-trpc";
 import { QueryValidator } from "../lib/validators/query-validator";
 import { getPayloadClient } from "../get-payload";
+import { paymentRouter } from "./endpoints/payment-router";
+import { TRPCError } from "@trpc/server";
 
 // creating api using trpc.
 export const appRouter = router({
@@ -46,7 +48,9 @@ export const appRouter = router({
             items,
             nextPage: hasNextPage ? nextPage : null
         }
-    })
+    }),
+
+    payment: paymentRouter,
 });
 
 export type AppRouter = typeof appRouter;

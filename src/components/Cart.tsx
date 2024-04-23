@@ -1,14 +1,7 @@
 'use client'
 
 import { ShoppingCart } from 'lucide-react'
-import {
- Sheet,
-  SheetContent,
-  SheetFooter,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from './ui/sheet'
+import { Sheet, SheetContent, SheetFooter, SheetHeader, SheetTitle, SheetTrigger } from './ui/sheet'
 import { Separator } from './ui/separator'
 import { formatPrice } from '@/lib/utils'
 import Link from 'next/link'
@@ -18,7 +11,7 @@ import { useCart } from '@/hooks/use-cart'
 import { ScrollArea } from './ui/scroll-area'
 import CartItem from './CartItems'
 import { useEffect, useState } from 'react'
-
+ 
 const Cart = () => {
   const { items } = useCart()
   const itemCount = items.length
@@ -100,7 +93,7 @@ const Cart = () => {
               aria-hidden='true'
               className='relative mb-4 h-60 w-60 text-muted-foreground'>
               <Image
-                src='/hippo-empty-cart.png'
+                src='/empty-cart-digital-bazaar.svg'
                 fill
                 alt='empty shopping cart hippo'
               />

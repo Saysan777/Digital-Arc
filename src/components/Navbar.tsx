@@ -10,7 +10,7 @@ import UserAccountNav from "./UserAccountNav"
 
 const Navbar = async () => {
     const nextCookies = cookies();              //use this fn to get cookies.(auto provided by nextjs)
-    const  user = await $currentUser(nextCookies);   // utility fn to get currentUser.
+    const user = await $currentUser(nextCookies);   // utility fn to get currentUser.
 
   return (
     <div className="bg-white sticky z-50 top-0 inset-x-0 h-16">

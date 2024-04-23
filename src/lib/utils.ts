@@ -8,7 +8,8 @@ export function cn(...inputs: ClassValue[]) {
 interface optionsInterface {
    currency?: "USD" | "EUR" | "GBP" | "BDT", 
    notation?: Intl.NumberFormatOptions['notation'] 
-  }
+}
+
 export function formatPrice (price: number| string, options: optionsInterface = {} ) {
   const { currency = "USD", notation = "compact" } = options
 
