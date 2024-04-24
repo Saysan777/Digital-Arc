@@ -1,4 +1,5 @@
-# DigitalArc - A modern fullstack digital marketplace designed to revolutionize the buying and selling of digital products. It offers a seamless user experience with elegant landing pages, a robust admin dashboard for efficient marketplace management. In addition to that, DigitalArc provides secure transactions facilitated by Stripe, enhanced secure authentication with Payload, and ensures a secure and engaging platform for both buyers and sellers.
+# DigitalArc - 
+A modern fullstack digital marketplace designed to revolutionize the buying and selling of digital products. It offers a seamless user experience with elegant landing pages, a robust admin dashboard for efficient marketplace management. In addition to that, DigitalArc provides secure transactions facilitated by Stripe, enhanced secure authentication with Payload, and ensures a secure and engaging platform for both buyers and sellers.
 
 Built with the Next.js 14 App Router, tRPC, TypeScript, Payload & Tailwind
 
