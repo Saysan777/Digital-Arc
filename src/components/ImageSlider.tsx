@@ -27,7 +27,6 @@ const ImageSlider = ({ imageUrls }: ImageSliderProps) => {
   })
 
   useEffect(() => {
-    // @ts-expect-error
     swiper?.on('slideChange', ({ activeIndex }) => {
       setActiveIndex(activeIndex)
       setSlideConfig({

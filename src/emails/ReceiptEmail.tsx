@@ -176,7 +176,7 @@ const ReceiptEmail = ({ email, date, orderId, products }: ReceiptEmailProps) => 
 
 export default ReceiptEmail
 
-//! This function converts the above things to plain html
+// * This function converts the above HTML code to plain html
 export const ReceiptEmailHtml = ( props: ReceiptEmailProps ) =>
     render(<ReceiptEmail {...props} />, {
           pretty: true,

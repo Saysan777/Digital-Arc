@@ -12,7 +12,7 @@ import path from 'path';
 
 const app = express();
 
-const PORT = Number(process.env.port) || 4002;
+const PORT = 3000;
 
 const createContext = ({ req, res }: trpcExpress.CreateExpressContextOptions) => ({ req, res });
 
@@ -48,6 +48,8 @@ const expressStartup = async () => {
 
             process.exit();
         })
+        
+        return
     }
 
     //Making the trpc router a express server with this middelware and sending req back to nextjs(check folder api).

@@ -8,7 +8,7 @@ import {
   DropdownMenuTrigger,
 } from './ui/dropdown-menu'
 import { Button } from "./ui/button"
-import { User } from "../../payload-types"
+import { User } from "../payload-types"
 import Link from "next/link"
 import { useAuth } from "@/hooks/use-auth"
 
