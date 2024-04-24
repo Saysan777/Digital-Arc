@@ -2,11 +2,12 @@
 - A modern fullstack digital marketplace designed to revolutionize the buying and selling of digital products. It offers a seamless user experience with elegant landing pages, a robust admin dashboard for efficient marketplace management. 
 
 - In addition to that, DigitalArc provides secure transactions facilitated by Stripe, enhanced secure authentication with Payload, and ensures a secure and engaging platform for both buyers and sellers.
-
+<br>
 Built with the Next.js 14 App Router, tRPC, TypeScript, Payload & Tailwind
 
 ![Project Image](https://github.com/Saysan777/Digital-Arc/blob/main/public/DigitalArc.jpg)
 
+<br>
 ## Features
 
 - 🛠️ Comprehensive marketplace solution meticulously crafted with Next.js 14.
@@ -22,7 +23,7 @@ Built with the Next.js 14 App Router, tRPC, TypeScript, Payload & Tailwind
 - 📱 Responsive design ensuring seamless use of DigitalArc on both mobile and web, providing an optimal user experience across all devices.
 - 🎁 Additional features and enhancements to further elevate the marketplace experience.
 
-
+<br>
 ## Getting started
 
 To get started with this project, run
@@ -33,6 +34,7 @@ To get started with this project, run
 
 and copy the .env.example variables into a separate .env file, fill them out & and that's all you need to get started!
 
+<br>
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
