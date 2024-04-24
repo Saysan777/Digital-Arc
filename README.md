@@ -8,7 +8,8 @@ Built with the Next.js 14 App Router, tRPC, TypeScript, Payload & Tailwind
 ![Project Image](https://github.com/Saysan777/Digital-Arc/blob/main/public/DigitalArc.jpg)
 
 <br>
-## Features
+
+# Features
 
 - 🛠️ Comprehensive marketplace solution meticulously crafted with Next.js 14.
 - 💻  Elegant landing page and product pages designed for optimal user experience.
