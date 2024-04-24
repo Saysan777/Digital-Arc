@@ -20,9 +20,9 @@ const Navbar = async () => {
                     <div className="flex h-16 items-center">
                         {/* TODO: Mobile nav */}
 
-                        <div className="ml-4 flex lg:ml-0">
+                        <div className="ml-4 flex items-center lg:ml-0">
                             <Link href='/'>
-                                 <Image src='/DigitalBazaar.png' alt="digital bazaar" width='100' height='100' />
+                                 <p className="font-mono font-bold italic bg-gradient-to-r from-purple-600 via-pink-400 to-blue-500 inline-block text-transparent bg-clip-text"> Digital Arc</p>
                             </Link>
 
                             <div className="hidden z-50 lg:ml-8 lg:block lg:self-stretch">
