@@ -7,7 +7,9 @@ Built with the Next.js 14 App Router, tRPC, TypeScript, Payload & Tailwind
 ## Features
 
 - 🛠️ Comprehensive marketplace solution meticulously crafted with Next.js 14.
+
 - 💻  Elegant landing page and product pages designed for optimal user experience.
+
 - 💳 Robust admin dashboard for efficient management of marketplace operations.
 - 🛍️ Facilitate user-driven transactions using Stripe, enabling individuals to buy and sell their digital products.
 - 🔑 Secure authentication mechanism utilizing Payload for enhanced security.
