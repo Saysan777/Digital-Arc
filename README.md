@@ -1,27 +1,35 @@
-## Getting Started
+# DigitalArc - A modern fullstack digital marketplace designed to revolutionize the buying and selling of digital products. It offers a seamless user experience with elegant landing pages, a robust admin dashboard for efficient marketplace management. In addition to that, DigitalArc provides secure transactions facilitated by Stripe, enhanced secure authentication with Payload, and ensures a secure and engaging platform for both buyers and sellers.
 
-First, run the development server:
+Built with the Next.js 14 App Router, tRPC, TypeScript, Payload & Tailwind
+
+![Project Image](https://github.com/Saysan777/Digital-Arc/blob/main/public/DigitalArc.jpg)
+
+## Features
+
+- 🛠️ Comprehensive marketplace solution meticulously crafted with Next.js 14.
+- 💻  Elegant landing page and product pages designed for optimal user experience.
+- 💳 Robust admin dashboard for efficient management of marketplace operations.
+- 🛍️ Facilitate user-driven transactions using Stripe, enabling individuals to buy and sell their digital products.
+- 🔑 Secure authentication mechanism utilizing Payload for enhanced security.
+- ✉️ Professionally designed emails for sign-up and post-purchase notifications, enhancing user engagement.
+- ✅ Feature for admin verification of products to maintain high quality standards.
+- 🌟 Aesthetically pleasing, modern UI design crafted with shadcn-ui, ensuring intuitive navigation.
+- 🛒 Implements locally persisted shopping cart for seamless user experience.
+- ⌨️ Entire codebase written in TypeScript, ensuring type safety and scalability
+- 📱 Responsive design ensuring seamless use of DigitalArc on both mobile and web, providing an optimal user experience across all devices.
+- 🎁 Additional features and enhancements to further elevate the marketplace experience.
+
+
+## Getting started
+
+To get started with this project, run
 
 ```bash
-npm run dev
-# or
-yarn dev
+  git clone https://github.com/Saysan777/Digital-Bazaar.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+and copy the .env.example variables into a separate .env file, fill them out & and that's all you need to get started!
 
-For form validation, I'm using react-hook-form along with zod for data validation. You can learn more about them here.
-[`react-hook-form`](https://react-hook-form.com/)
-[`Zod`](https://zod.dev/)
+## License
 
-This project uses `TRPC` for seamless type safety communication between client and server.
-[`TRPC`](https://trpc.io)
-
-This project uses `zustand` for managing state.
-[`zustand`](https://docs.pmnd.rs/zustand/getting-started/introduction)
-
-This Project uses `react-email/component` for email receipts.
-[`ReactEmail`]()
-
-This Project uses `date-fns` for handling dates.
-[`Date-fns`]()
+[MIT](https://choosealicense.com/licenses/mit/)
