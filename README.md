@@ -24,7 +24,8 @@ Built with the Next.js 14 App Router, tRPC, TypeScript, Payload & Tailwind
 - 🎁 Additional features and enhancements to further elevate the marketplace experience.
 
 <br>
-## Getting started
+
+# Getting started
 
 To get started with this project, run
 
@@ -35,6 +36,7 @@ To get started with this project, run
 and copy the .env.example variables into a separate .env file, fill them out & and that's all you need to get started!
 
 <br>
-## License
+
+# License
 
 [MIT](https://choosealicense.com/licenses/mit/)
