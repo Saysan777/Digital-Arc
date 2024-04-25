@@ -22,7 +22,7 @@ const Navbar = async () => {
 
                         <div className="ml-4 flex items-center lg:ml-0">
                             <Link href='/'>
-                                 <p className="font-mono font-bold italic bg-gradient-to-r from-purple-600 via-pink-400 to-blue-500 inline-block text-transparent bg-clip-text"> Digital Arc</p>
+                                 <p className="font-mono font-bold text-md md:text-xl bg-gradient-to-r from-purple-700 via-pink-400 to-orange-500 inline-block text-transparent bg-clip-text"> Digital Arc</p>
                             </Link>
 
                             <div className="hidden z-50 lg:ml-8 lg:block lg:self-stretch">
