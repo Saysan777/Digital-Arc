@@ -12,7 +12,7 @@ import path from 'path';
 
 const app = express();
 
-const PORT = 3000;
+const PORT = process.env.PORT ||  3000;
 
 const createContext = ({ req, res }: trpcExpress.CreateExpressContextOptions) => ({ req, res });
 
