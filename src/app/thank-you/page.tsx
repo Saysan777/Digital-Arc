@@ -54,12 +54,13 @@ const ThankYouPage = async ({ searchParams }: PageProps) => {
   return (
     <main className='relative lg:min-h-full'>
       <div className='hidden lg:block h-80 overflow-hidden lg:absolute lg:h-full lg:w-1/2 lg:pr-4 xl:pr-12'>
-        <Image
+        {/* TODO: Fix the thank you page image issue */}
+        {/* <Image
           fill
           src='/checkout-thank-you.jpg'
           className='h-full w-full object-cover object-center'
           alt='thank you for your order'
-        />
+        /> */}
       </div>
 
       <div>
