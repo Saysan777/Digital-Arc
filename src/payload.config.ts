@@ -1,10 +1,11 @@
+
 import { buildConfig } from "payload/config";
 import { webpackBundler } from "@payloadcms/bundler-webpack";
 import { mongooseAdapter } from '@payloadcms/db-mongodb'
 import { slateEditor } from "@payloadcms/richtext-slate";
 import path from "path";
-import { Users } from "./collections/Users";
 import dotenv from 'dotenv';
+import { Users } from "./collections/Users";
 import { Products } from "./collections/Products";
 import { Media } from "./collections/Media";
 import { Product_Files } from "./collections/ProductFile";
@@ -21,10 +22,10 @@ export default buildConfig({
         admin: '/sell'
     },
     admin: {
-        user: "users",
+        user: "Users",
         bundler: webpackBundler(),
         meta: {
-            titleSuffix: "- Digital Bazaar",
+            titleSuffix: "- Digital Arc",
             favicon: '/favicon.ico',
             ogImage: '/thumbnail.jpg'
         }
