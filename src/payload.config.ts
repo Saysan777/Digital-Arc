@@ -5,7 +5,7 @@ import { mongooseAdapter } from '@payloadcms/db-mongodb'
 import { slateEditor } from "@payloadcms/richtext-slate";
 import path from "path";
 import dotenv from 'dotenv';
-import { Users } from "./collections/Users";
+import { Users } from "./collections/users";
 import { Products } from "./collections/Products";
 import { Media } from "./collections/Media";
 import { Product_Files } from "./collections/ProductFile";
@@ -22,7 +22,7 @@ export default buildConfig({
         admin: '/sell'
     },
     admin: {
-        user: "Users",
+        user: "users",
         bundler: webpackBundler(),
         meta: {
             titleSuffix: "- Digital Arc",
