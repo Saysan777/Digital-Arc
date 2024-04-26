@@ -21,7 +21,7 @@ const VerifyEmailPage = ({ searchParams }: PageProps) => {
             ): (
                 <div className="flex h-full flex-col items-center space-y-6">
                     <div className="relative mb-4 h-60 w-60 text-muted-foreground">
-                        <Image src="/Email-Sent.svg" fill alt="digital bazaar email" />
+                        <Image src="/Email-Sent.svg" fill alt="digital arc email" />
                     </div>
                     <h3 className="font-semibold text-2xl">Check your email</h3>
 

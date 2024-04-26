@@ -31,7 +31,7 @@ export default function Home() {
           </h1>
 
           <p className="mt-6 text-lg max-w-prose text-muted-foreground">
-            Welcome to  <strong className="text-blue-600">Digital Bazaar.</strong> Every asset on our
+            Welcome to  <strong className="text-blue-600">Digital Arc.</strong> Every asset on our
             platform is verified by our team to ensure our highes quality standards.
           </p>
 

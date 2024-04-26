@@ -15,7 +15,7 @@ export const Orders: CollectionConfig = {
     slug: 'orders',
     admin: {
         useAsTitle: "Your Orders",
-        description: 'A summary of all your order on Digital Bazaar'
+        description: 'A summary of all your order on Digital Arc'
     },
     access: {
         read: personalOrder,            // can only read/see personal/own order.

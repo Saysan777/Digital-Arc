@@ -53,8 +53,6 @@ export const paymentRouter = router({
             }
         })
 
-        console.log('line items being sent to stripe', line_items);
-
         try {
             const stripeSession = await stripe.checkout.sessions.create({
                 success_url: `${ process.env.NEXT_PUBLIC_SERVER_URL }/thank-you?orderId=${ order.id }`,

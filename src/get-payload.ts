@@ -47,7 +47,7 @@ export const getPayloadClient = async ({ initOptions }: Args = {}): Promise<Payl
             email: { 
                 transport: transporter,                             // our transporter is resend.
                 fromAddress: "no-reply@alokaryal.com.np",                // You can also use: onboarding@resend.com which is provided by resend for testing purpose
-                fromName: 'Digital Bazaar'
+                fromName: 'Digital Arc'
             }, 
             secret: process.env.PAYLOAD_SECRET, 
             local:initOptions?.express ? false: true,
