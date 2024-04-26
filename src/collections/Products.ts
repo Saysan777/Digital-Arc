@@ -213,6 +213,7 @@ export const Products: CollectionConfig = {
                 hidden: true,
             }
         },
+        // when we fetch products, this will fetch the data from media collection as well, as type: relationship has depth: 1
         {
             name: 'images',
             type: 'array',

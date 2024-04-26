@@ -3,9 +3,13 @@ const nextConfig = {
     images: {
         remotePatterns: [
             {
-                hostname: 'localhost',
                 protocol: 'http',
+                hostname: 'localhost',
             },
+            {
+				protocol: "https",
+				hostname: "digital-arc-production.up.railway.app",
+			},
         ],
     }
 };
