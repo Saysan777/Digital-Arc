@@ -44,7 +44,7 @@ const expressStartup = async () => {
         }
     })
 
-    app.post('api/webhooks/stripe', webhookMiddleware, stripeWebhookHandler)
+    app.post('/api/webhooks/stripe', webhookMiddleware, stripeWebhookHandler)
 
     const payload = await getPayloadClient({
         initOptions: {
