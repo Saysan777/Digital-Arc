@@ -31,7 +31,8 @@ export default buildConfig({
         }
     },
     rateLimit: {
-        max: 2000
+        max: 2000,      // maximum number of request a single IP can send. This is to prevent ddos brute force etc
+        trustProxy: false       // enables proxy like nginx or port forwaring tunnels. Change it to true is required.
     },
     editor: slateEditor({}),
     db: mongooseAdapter({

@@ -27,6 +27,7 @@ export const stripeWebhookHandler = async (req: express.Request, res: express.Re
 
  try {
    event = stripe.webhooks.constructEvent( body, signature, process.env.STRIPE_WEBHOOK_SECRET || '' )
+   console.log('constructed webhook event-------', event);
  } catch (err) {
    return res.status(400).send( `Webhook Error: ${ err instanceof Error ? err.message : 'Unknown Error' }` )
  }
@@ -34,11 +35,13 @@ export const stripeWebhookHandler = async (req: express.Request, res: express.Re
  const session = event.data.object as Stripe.Checkout.Session
 
  if (!session?.metadata?.userId || !session?.metadata?.orderId) {
+  console.log('sesssoin userId--------------', session?.metadata?.userId,  session?.metadata?.orderId );
    return res .status(400).send(`Webhook Error: No user present in metadata`)
  }
 
  // Updating isPaid and sending email 
  if (event.type === 'checkout.session.completed') {
+  console.log('checkout session completed event catched---------------');
    const payload = await getPayloadClient()
 
    const { docs: users } = await payload.find({
@@ -51,6 +54,8 @@ export const stripeWebhookHandler = async (req: express.Request, res: express.Re
    })
 
    const [ user ] = users
+
+   console.log('user doc fetched from payload collections------------', users);
 
    if (!user) return res.status(404).json({ error: 'No such user exists.' })
 
@@ -66,9 +71,11 @@ export const stripeWebhookHandler = async (req: express.Request, res: express.Re
 
    const [ order ] = orders
 
+   console.log('orders fetched from orders collection--------------', orders);
+
    if (!order) return res.status(404).json({ error: 'No such order exists.' })
 
-   await payload.update({
+   const updatedTest = await payload.update({
      collection: 'orders',
      data: {
        _isPaid: true,
@@ -80,10 +87,12 @@ export const stripeWebhookHandler = async (req: express.Request, res: express.Re
      },
    })
 
+   console.log('updatedTest--------', updatedTest);
+
    // send receipt email
    try {
      const data = await resend.emails.send({
-       from: 'DigitalHippo <hello@joshtriedcoding.com>',
+       from: 'DigitalArc <no-reply@alokaryal.com.np>',
        to: [user.email],
        subject:
          'Thanks for your order! This is your receipt.',
