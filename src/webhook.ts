@@ -21,12 +21,12 @@ const resend = new Resend(process.env.RESEND_API_KEY)
 export const stripeWebhookHandler = async (req: express.Request, res: express.Response) => {
  const webhookRequest = req as any as WebhookRequest
  const body = webhookRequest.rawBody;
- const signature = req.headers[' stripe-signature' ] || ''
+ const signature = req.headers['stripe-signature' ] || ''
 
  let event;
 
  try {
-   event = stripe.webhooks.constructEvent( body, signature, process.env.STRIPE_WEBHOOK_SECRET || '' )
+   event = stripe.webhooks.constructEvent(body, signature, process.env.STRIPE_WEBHOOK_SECRET || '' )
    console.log('constructed webhook event-------', event);
  } catch (err) {
    return res.status(400).send( `Webhook Error: ${ err instanceof Error ? err.message : 'Unknown Error' }` )
