@@ -53,7 +53,7 @@ const Page = () => {
         <div className="container relative flex pt-20 flex-col items-center justify-center lg:px-0">
             <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
                 <div className="flex flex-col items-center space-y-2 text-center">
-                    <Image src="/DigitalBazaar.png" alt="digital arc sign-up" width="100" height="100" />
+                    <Image src="/DigitalArc.jpg" alt="digital arc sign-up" width="100" height="100" />
                     <h1 className="text-2xl font-bold">Create an account</h1>
                     <Link href="/sign-in" className={ buttonVariants({ variant:'link',className:'gap-1.5' }) }>Already have an account? <ArrowRight /> </Link>
                  </div>
