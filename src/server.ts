@@ -25,8 +25,6 @@ const options: cors.CorsOptions = {
 }
 
 app.use(cors(options));
-// app.use(express.json());
-
 
 const PORT = process.env.PORT ||  3000;
 

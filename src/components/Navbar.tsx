@@ -8,6 +8,7 @@ import { $currentUser } from "@/lib/payload-utils"
 import { cookies } from "next/headers"  //import cookies from nextjs
 import UserAccountNav from "./UserAccountNav"
 import MobileNav from "./MobileNav"
+import Image from "next/image"
 
 const Navbar = async () => {
     const nextCookies = cookies();              //use this fn to get cookies.(auto provided by nextjs)
@@ -23,7 +24,12 @@ const Navbar = async () => {
 
                         <div className="ml-4 flex items-center lg:ml-0">
                             <Link href='/'>
-                                 <p className="font-mono font-bold italic text-md md:text-xl bg-gradient-to-r from-purple-700 via-pink-400 to-purple-700 inline-block text-transparent bg-clip-text"> Digital Arc</p>
+                                 <Image 
+                                    src='/DigitalArcLogo.png'
+                                    alt="Digital arc logo"
+                                    width={120}
+                                    height={100}
+                                 />
                             </Link>
 
                             <div className="hidden z-50 lg:ml-8 lg:block lg:self-stretch">
