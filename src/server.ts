@@ -11,8 +11,22 @@ import nextBuild from 'next/dist/build'
 import path from 'path';
 import { PayloadRequest } from 'payload/types';
 import { parse } from 'url';        // built in things no need to install
+import cors from 'cors'
 
 const app = express();
+
+// Protecting server call from random call and only allow included domain name
+const allowedOrigin = [
+    'http://localhost:3000', 'https://digital-arc-production.up.railway.app', 'https://3qgv0vcx-3000.asse.devtunnels.ms'
+]
+
+const options: cors.CorsOptions = {
+    origin: allowedOrigin
+}
+
+app.use(cors(options));
+app.use(express.json());
+
 
 const PORT = process.env.PORT ||  3000;
 
