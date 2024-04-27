@@ -18,7 +18,7 @@ const PaymentStatus = ({  orderEmail, orderId, isPaid }: PaymentStatusProps) => 
     {
       enabled: isPaid === false,            // we only query as long as isPaid is false.
       refetchInterval: (data) =>            // this is creating polling(fetching data on timely basis)
-        data?.isPaid ? false : 1000,        // every 1 sec untill isPaid is false
+        data?.isPaid ? false : 1000,        // check every 1 sec untill isPaid is false
     }
   )
 

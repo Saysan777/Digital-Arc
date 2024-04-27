@@ -1,5 +1,6 @@
 
 import { Product } from '@/payload-types'
+import { toast } from 'sonner'
 import { create } from 'zustand'
 import { createJSONStorage, persist } from 'zustand/middleware'
 
@@ -19,16 +20,25 @@ export const useCart = create<CartState>()(
       items: [],
       addItem: (product) =>
         set((state) => {
+          const isProductInCart = state.items.some(item => item.product.id === product.id)
+
+          if(isProductInCart) {
+            toast.error('Oops!, item already added to cart');
+            return { ...state };
+          }
+        
           return { items: [...state.items, { product }] }
         }),
       removeItem: (id) =>
-        set((state) => ({
-          items: state.items.filter(
-            (item) => { 
-              item.product.id !== id 
-            }
-          ),
-        })),
+        set((state) => {
+          const index = state.items.findIndex(item => item.product.id === id);
+
+          if(index === -1) return { ...state }
+
+          return {
+            items: [ ...state.items.slice(0, index), ...state.items.slice(index + 1) ]
+          }
+        }),
       clearCart: () => set({ items: [] }),
     }),
     {

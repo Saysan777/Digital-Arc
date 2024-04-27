@@ -24,7 +24,7 @@ export const paymentRouter = router({
             }
         })
 
-        const filteredProducts = products.filter((product)=> Boolean(product.priceId))
+        const filteredProducts = products.filter((product)=> Boolean(product.priceId));
 
         const order = await payload.create({
             collection: 'orders',
@@ -35,13 +35,12 @@ export const paymentRouter = router({
             }
         });
 
-        // 
         const line_items: Stripe.Checkout.SessionCreateParams.LineItem[] = [];
 
         filteredProducts.forEach((product) => {
             line_items.push({
               price: product.priceId!,
-              quantity: 1,
+              quantity: 1
             })
           })
 

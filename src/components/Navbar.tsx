@@ -1,6 +1,5 @@
 import Link from "next/link"
 import MaxWidthWrapper from "./MaxWidthWrapper"
-// import Image from "next/image"
 import NavItems from "./NavItems"
 import { buttonVariants } from "./ui/button"
 import Cart from "./Cart"
@@ -25,10 +24,10 @@ const Navbar = async () => {
                         <div className="ml-4 flex items-center lg:ml-0">
                             <Link href='/'>
                                  <Image 
-                                    src='/DigitalArcLogo.png'
+                                    src='/DigitalArcLogo.svg'
                                     alt="Digital arc logo"
                                     width={120}
-                                    height={100}
+                                    height={10}
                                  />
                             </Link>
 
