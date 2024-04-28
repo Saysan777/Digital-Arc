@@ -52,6 +52,9 @@ const Navbar = async () => {
                                         <Cart />
                                     </div>
                                 </div>
+                                <div className="ml-4 flow-root lg:hidden">
+                                    <Cart />
+                                </div>
                         </div>
                   </div>
                 </div>
